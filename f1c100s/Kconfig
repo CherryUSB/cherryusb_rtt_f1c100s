@@ -1,0 +1,31 @@
+mainmenu "RT-Thread Configuration"
+
+config $BSP_DIR
+    string
+    default "."
+
+config $RTT_DIR
+    string
+    default "../"
+
+# you can change the RTT_ROOT default "../.." to your rtthread_root,
+# example : default "F:/git_repositories/rt-thread"
+
+config PKGS_DIR
+    string
+    option env="PKGS_ROOT"
+    default "packages"
+
+source "$RTT_DIR/Kconfig"
+source "$PKGS_DIR/Kconfig"
+
+config ARCH_ARM_ARM9
+    bool
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+    select ARCH_ARM
+    default y
+
+source "$BSP_DIR/drivers/Kconfig"
+
+

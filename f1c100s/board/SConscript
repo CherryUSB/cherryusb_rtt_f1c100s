@@ -1,0 +1,14 @@
+from building import *
+
+cwd  = GetCurrentDir()
+list = os.listdir(cwd)
+src = ['board.c']
+CPPPATH = [cwd]
+group = DefineGroup('board', src, depend = [''], CPPPATH = CPPPATH)
+
+objs = []
+for item in list:
+    if os.path.isfile(os.path.join(cwd, item, 'SConscript')):
+        objs = objs + SConscript(os.path.join(item, 'SConscript'))
+objs = objs + group
+Return('objs')

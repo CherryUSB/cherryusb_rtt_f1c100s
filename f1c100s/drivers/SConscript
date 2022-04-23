@@ -1,0 +1,34 @@
+from building import *
+
+cwd  = GetCurrentDir()
+
+# add the general drivers.
+src = Split("""
+drv_clock.c
+drv_reset.c
+drv_dma.c
+drv_usb.c
+usb_phy.c
+""")
+
+
+list = os.listdir(cwd)
+CPPPATH = [cwd]
+objs = []
+
+# add gpio driver code
+if GetDepend('RT_USING_PIN'):
+    src = src + ['drv_gpio.c']
+
+# add serial driver code
+if GetDepend('TINA_USING_UART0') or GetDepend('TINA_USING_UART1') or GetDepend('TINA_USING_UART2'):
+    src = src + ['drv_uart.c']
+
+group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH)
+
+for d in list:
+    path = os.path.join(cwd, d)
+    if os.path.isfile(os.path.join(path, 'SConscript')):
+        objs = objs + SConscript(os.path.join(d, 'SConscript'))
+objs = objs + group
+Return('objs')

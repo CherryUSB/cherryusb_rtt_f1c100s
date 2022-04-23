@@ -1,0 +1,19 @@
+Import('rtconfig')
+from building import *
+
+cwd     = GetCurrentDir()
+src     = Glob('*.c')
+CPPPATH = [cwd]
+ASFLAGS = ''
+
+if rtconfig.PLATFORM == 'gcc':
+    src += Glob('*_gcc.S')
+if rtconfig.PLATFORM == 'armcc':
+    src += Glob('*_rvds.S')
+
+if rtconfig.PLATFORM == 'armcc':
+    ASFLAGS = ' --cpreproc'
+
+group = DefineGroup('CPU', src, depend = [''], CPPPATH = CPPPATH, ASFLAGS = ASFLAGS)
+
+Return('group')
