@@ -22,6 +22,15 @@ int usbd_cdc_start(void)
     return 0;
 }
 MSH_CMD_EXPORT(usbd_cdc_start, usb device cdc demo);
+
+int usbd_cdc_send(void)
+{
+    extern void cdc_acm_data_send_with_dtr_test(void);
+
+    cdc_acm_data_send_with_dtr_test();
+    return 0;
+}
+MSH_CMD_EXPORT(usbd_cdc_send, usb device cdc demo);
 #endif
 #ifdef PKG_CHERRYUSB_HOST
 int usbh_start(void)
