@@ -121,7 +121,7 @@ RT_WEAK void assert_hook(const char *ex, const char *func, rt_size_t line)
 
 static int rt_hw_trace_init(void)
 {
-    rt_assert_set_hook(assert_hook);
+    //rt_assert_set_hook(assert_hook);
     return 0;
 }
 INIT_APP_EXPORT(rt_hw_trace_init);
