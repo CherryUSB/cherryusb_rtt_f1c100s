@@ -1,6 +1,19 @@
 #ifndef _USB_CONFIG_H
 #define _USB_CONFIG_H
 
+#include "rtthread.h"
+
+/* USB common Configuration */
+#ifndef CONFIG_USB_DBG_LEVEL
+#define CONFIG_USB_DBG_LEVEL USB_DBG_INFO
+#endif
+
+#ifndef CONFIG_USB_PRINTF
+#define CONFIG_USB_PRINTF rt_kprintf
+#endif
+
+#define CONFIG_USB_PRINTF_COLOR_ENABLE
+
 /* USB DEVICE Configuration */
 /* core */
 #ifndef CONFIG_USBDEV_REQUEST_BUFFER_LEN
@@ -96,10 +109,10 @@
 #endif
 
 #ifndef CONFIG_USBHOST_PSC_PRIO
-#define CONFIG_USBHOST_PSC_PRIO 4
+#define CONFIG_USBHOST_PSC_PRIO 9
 #endif
 #ifndef CONFIG_USBHOST_PSC_STACKSIZE
-#define CONFIG_USBHOST_PSC_STACKSIZE 4096
+#define CONFIG_USBHOST_PSC_STACKSIZE 8192
 #endif
 
 #ifndef CONFIG_USBHOST_DEV_NAMELEN

@@ -1,9 +1,12 @@
 ## TINA BSP 使用说明
 
+本仓库基于 rt-thread 柿饼 M3 开发，并且 M3 模块内置 rt 的 bootloader 功能，可以使用 usb 更新固件。所以如果使用的是非 M3 模块，可以参考官方的 tina bsp 下载流程。
+
 - 编译
 
 使用下面命令进行编译，默认支持开启主从，但是同一时刻只能用一个。编译完成后生成 **fw_compress.rbl** 文件
 ```
+pkgs --update
 
 scons -j12
 
