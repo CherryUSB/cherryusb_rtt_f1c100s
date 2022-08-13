@@ -58,9 +58,9 @@ SECTIONS
 
         /* section information for usbh class */
         . = ALIGN(4);
-        _usbh_class_info_start = .;
-        KEEP(*(usbh_class_info))
-        _usbh_class_info_end = .;        
+        __usbh_class_info_start__ = .;
+        KEEP(*(.usbh_class_info))
+        __usbh_class_info_end__ = .;        
     } =0
     __text_end = .;
 
