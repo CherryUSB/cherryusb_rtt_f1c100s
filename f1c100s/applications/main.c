@@ -36,8 +36,10 @@ MSH_CMD_EXPORT(usbd_cdc_send, usb device cdc demo);
 int usbh_start(void)
 {
     extern int usbh_initialize(void);
+    void usbh_class_test(void);
 
     usbh_initialize();
+    usbh_class_test();
     return 0;
 }
 MSH_CMD_EXPORT(usbh_start, usb host demo);
