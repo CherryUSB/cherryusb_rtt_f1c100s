@@ -10,12 +10,13 @@
 
 /* ================ USB common Configuration ================ */
 
+#define CONFIG_USB_PRINTF(...) rt_kprintf(__VA_ARGS__)
+
+#define usb_malloc(size) rt_malloc(size)
+#define usb_free(ptr)    rt_free(ptr)
+
 #ifndef CONFIG_USB_DBG_LEVEL
 #define CONFIG_USB_DBG_LEVEL USB_DBG_INFO
-#endif
-
-#ifndef CONFIG_USB_PRINTF
-#define CONFIG_USB_PRINTF rt_kprintf
 #endif
 
 /* Enable print with color */
