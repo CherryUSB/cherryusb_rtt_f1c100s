@@ -8,14 +8,14 @@
 
 #include <rtthread.h>
 
-#define CHERRYUSB_VERSION 0x000900
+#define CHERRYUSB_VERSION 0x001001
 
 /* ================ USB common Configuration ================ */
 
 #define CONFIG_USB_PRINTF(...) rt_kprintf(__VA_ARGS__)
 
-#define usb_malloc(size) rt_malloc(size)
-#define usb_free(ptr)    rt_free(ptr)
+#define usb_malloc(size) malloc(size)
+#define usb_free(ptr)    free(ptr)
 
 #ifndef CONFIG_USB_DBG_LEVEL
 #define CONFIG_USB_DBG_LEVEL USB_DBG_INFO
@@ -46,27 +46,6 @@
 /* Enable test mode */
 // #define CONFIG_USBDEV_TEST_MODE
 
-//#define CONFIG_USBDEV_TX_THREAD
-//#define CONFIG_USBDEV_RX_THREAD
-
-#ifdef CONFIG_USBDEV_TX_THREAD
-#ifndef CONFIG_USBDEV_TX_PRIO
-#define CONFIG_USBDEV_TX_PRIO 4
-#endif
-#ifndef CONFIG_USBDEV_TX_STACKSIZE
-#define CONFIG_USBDEV_TX_STACKSIZE 2048
-#endif
-#endif
-
-#ifdef CONFIG_USBDEV_RX_THREAD
-#ifndef CONFIG_USBDEV_RX_PRIO
-#define CONFIG_USBDEV_RX_PRIO 4
-#endif
-#ifndef CONFIG_USBDEV_RX_STACKSIZE
-#define CONFIG_USBDEV_RX_STACKSIZE 2048
-#endif
-#endif
-
 #ifndef CONFIG_USBDEV_MSC_BLOCK_SIZE
 #define CONFIG_USBDEV_MSC_BLOCK_SIZE 512
 #endif
@@ -83,8 +62,18 @@
 #define CONFIG_USBDEV_MSC_VERSION_STRING "0.01"
 #endif
 
+// #define CONFIG_USBDEV_MSC_THREAD
+
+#ifndef CONFIG_USBDEV_MSC_PRIO
+#define CONFIG_USBDEV_MSC_PRIO 4
+#endif
+
+#ifndef CONFIG_USBDEV_MSC_STACKSIZE
+#define CONFIG_USBDEV_MSC_STACKSIZE 2048
+#endif
+
 #ifndef CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE
-#define CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE 128
+#define CONFIG_USBDEV_RNDIS_RESP_BUFFER_SIZE 156
 #endif
 
 #ifndef CONFIG_USBDEV_RNDIS_ETH_MAX_FRAME_SIZE
@@ -147,7 +136,7 @@
 
 /* ================ USB Host Port Configuration ==================*/
 
-//#define CONFIG_USBHOST_PIPE_NUM 12
+#define CONFIG_USBHOST_PIPE_NUM 4
 
 /* ================ EHCI Configuration ================ */
 
@@ -155,7 +144,7 @@
 #define CONFIG_USB_EHCI_HCOR_BASE       (0x20072000 + 0x10)
 #define CONFIG_USB_EHCI_FRAME_LIST_SIZE 1024
 // #define CONFIG_USB_EHCI_INFO_ENABLE
-// #define CONFIG_USB_ECHI_HCOR_RESERVED_DISABLE
+// #define CONFIG_USB_EHCI_HCOR_RESERVED_DISABLE
 // #define CONFIG_USB_EHCI_CONFIGFLAG
 // #define CONFIG_USB_EHCI_PORT_POWER
 

@@ -156,18 +156,12 @@
 /* u8g2: a monochrome graphic library */
 
 
-/* PainterEngine: A cross-platform graphics application framework written in C language */
-
-
 /* tools packages */
 
 
 /* system packages */
 
 /* enhanced kernel services */
-
-
-/* POSIX extension functions */
 
 
 /* acceleration: Assembly language or algorithmic acceleration packages */
@@ -191,16 +185,24 @@
 #define PKG_CHERRYUSB_HOST_CDC
 #define PKG_CHERRYUSB_HOST_HID
 #define PKG_CHERRYUSB_HOST_MSC
-#define PKG_CHERRYUSB_HOST_RNDIS
 #define PKG_CHERRYUSB_HOST_TEMPLATE
-#define PKG_CHERRYUSB_HOST_PSC_THREAD_STACK_SIZE 2048
-#define PKG_CHERRYUSB_HOST_PSC_THREAD_PRIO 5
 #define PKG_USING_CHERRYUSB_LATEST_VERSION
 
 /* peripheral libraries and drivers */
 
+/* sensors drivers */
+
+
+/* touch drivers */
+
+
+/* Kendryte SDK */
+
 
 /* AI packages */
+
+
+/* Signal Processing and Control Algorithm Packages */
 
 
 /* miscellaneous packages */
