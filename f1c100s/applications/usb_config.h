@@ -14,8 +14,8 @@
 
 #define CONFIG_USB_PRINTF(...) rt_kprintf(__VA_ARGS__)
 
-#define usb_malloc(size) malloc(size)
-#define usb_free(ptr)    free(ptr)
+#define usb_malloc(size) rt_malloc(size)
+#define usb_free(ptr)    rt_free(ptr)
 
 #ifndef CONFIG_USB_DBG_LEVEL
 #define CONFIG_USB_DBG_LEVEL USB_DBG_INFO
@@ -130,12 +130,14 @@
 
 /* ================ USB Device Port Configuration ================*/
 
-//#define USBD_IRQHandler USBD_IRQHandler
-//#define USB_BASE (0x40080000UL)
-//#define USB_NUM_BIDIR_ENDPOINTS 4
+#define USBD_IRQHandler USBD_IRQHandler
+#define USBD_BASE (0x01c13000)
+#define CONFIG_USBDEV_EP_NUM 4
 
 /* ================ USB Host Port Configuration ==================*/
 
+#define USBH_IRQHandler USBH_IRQHandler
+#define USBH_BASE (0x01c13000)
 #define CONFIG_USBHOST_PIPE_NUM 4
 
 /* ================ EHCI Configuration ================ */
